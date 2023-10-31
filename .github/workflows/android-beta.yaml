@@ -71,9 +71,15 @@ jobs:
           cmake --version
           ninja --version
           ./gradlew -Pfirebase -x lint -x lintVitalGoogleBeta assembleGoogleBeta uploadCrashlyticsSymbolFileGoogleBeta uploadCrashlyticsMappingFileGoogleBeta
+      
+      - name: Upload apk zip to actions
+        uses: actions/upload-artifact@v2
+        with:
+          name: workflow-artifacts
+          # path: 
 
-      - name: Upload beta apk to App Distribution
-        shell: bash
-        working-directory: android
-        run: |
-          ./gradlew appDistributionUploadGoogleBeta
+      # - name: Upload beta apk to App Distribution
+      #   shell: bash
+      #   working-directory: android
+      #   run: |
+      #     ./gradlew appDistributionUploadGoogleBeta
